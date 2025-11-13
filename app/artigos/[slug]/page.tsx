@@ -171,25 +171,26 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   <h3 className="font-semibold text-gray-900 mb-4">Acesso ao Artigo</h3>
 
                   {article.pdfUrl && (
-                    <Button variant="primary" size="md" fullWidth asChild>
-                      <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer">
+                    <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer" className="w-full">
+                      <Button variant="primary" size="md" fullWidth>
                         <FileDown className="w-4 h-4 mr-2" aria-hidden="true" />
                         Download PDF
-                      </a>
-                    </Button>
+                      </Button>
+                    </a>
                   )}
 
                   {article.doi && (
-                    <Button variant="outline" size="md" fullWidth asChild>
-                      <a
-                        href={`https://doi.org/${article.doi}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
+                    <a
+                      href={`https://doi.org/${article.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full"
+                    >
+                      <Button variant="outline" size="md" fullWidth>
                         <ExternalLink className="w-4 h-4 mr-2" aria-hidden="true" />
                         Ver no DOI
-                      </a>
-                    </Button>
+                      </Button>
+                    </a>
                   )}
                 </CardContent>
               </Card>
