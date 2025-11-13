@@ -101,7 +101,7 @@ export async function uploadToLocal(
   // Processar imagem se for uma imagem
   if (file.type.startsWith('image/') && opts.resize) {
     try {
-      buffer = await sharp(buffer)
+      const processedBuffer = await sharp(buffer)
         .resize({
           width: opts.resize.width,
           height: opts.resize.height,
@@ -110,6 +110,7 @@ export async function uploadToLocal(
         })
         .jpeg({ quality: 90 })
         .toBuffer()
+      buffer = processedBuffer as Buffer
     } catch (error) {
       console.error('Erro ao processar imagem:', error)
       // Continuar com o arquivo original se falhar
