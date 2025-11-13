@@ -110,7 +110,7 @@ export async function uploadToLocal(
         })
         .jpeg({ quality: 90 })
         .toBuffer()
-      buffer = processedBuffer as Buffer
+      buffer = Buffer.from(processedBuffer)
     } catch (error) {
       console.error('Erro ao processar imagem:', error)
       // Continuar com o arquivo original se falhar
