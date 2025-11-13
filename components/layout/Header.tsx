@@ -128,9 +128,11 @@ export default function Header() {
                 )}
               </div>
             ))}
-            <Button href="/contato" variant="primary" size="sm" className="ml-4">
-              Entre em Contato
-            </Button>
+            <Link href="/contato">
+              <Button variant="primary" size="sm" className="ml-4">
+                Entre em Contato
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -207,9 +209,11 @@ export default function Header() {
                   )}
                 </div>
               ))}
-              <Button href="/contato" variant="primary" size="sm" fullWidth className="mt-4">
-                Entre em Contato
-              </Button>
+              <Link href="/contato">
+                <Button variant="primary" size="sm" fullWidth className="mt-4">
+                  Entre em Contato
+                </Button>
+              </Link>
             </div>
           </div>
         )}
