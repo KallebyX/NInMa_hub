@@ -42,10 +42,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-
-// Configuração para aceitar arquivos grandes
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-}
