@@ -75,7 +75,7 @@ export default function ProductsPage() {
   return (
     <>
       {/* Hero */}
-      <Section background="gradient-to-br from-primary to-secondary" className="text-white">
+      <Section background="primary" className="bg-gradient-to-br from-primary to-secondary text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="heading-1 mb-6">Nossos Produtos</h1>
           <p className="body-large text-white/90">
