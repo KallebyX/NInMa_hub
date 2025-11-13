@@ -1,0 +1,53 @@
+{
+  "name": "ninma-hub",
+  "version": "1.0.0",
+  "description": "Hub de Inovação em Saúde Materno Infantil - Universidade Franciscana",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prisma:generate": "prisma generate",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "dependencies": {
+    "next": "14.2.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "next-auth": "^4.24.7",
+    "@prisma/client": "^5.18.0",
+    "@tanstack/react-query": "^5.51.23",
+    "axios": "^1.7.3",
+    "bcryptjs": "^2.4.3",
+    "react-hook-form": "^7.52.2",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.9.0",
+    "framer-motion": "^11.3.24",
+    "lucide-react": "^0.424.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.0",
+    "date-fns": "^3.6.0",
+    "react-quill": "^2.0.0",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4",
+    "@types/node": "^22.1.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/bcryptjs": "^2.4.6",
+    "tailwindcss": "^3.4.8",
+    "postcss": "^8.4.41",
+    "autoprefixer": "^10.4.20",
+    "prisma": "^5.18.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.5",
+    "ts-node": "^10.9.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  }
+}

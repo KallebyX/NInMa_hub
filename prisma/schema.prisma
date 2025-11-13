@@ -1,0 +1,231 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo de Usuário para Admin
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+// Produtos desenvolvidos no programa
+model Product {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  content     String   @db.Text
+  image       String?
+  category    String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("products")
+  @@index([slug])
+  @@index([published])
+}
+
+// Artigos científicos
+model Article {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  authors     String[] @default([])
+  abstract    String   @db.Text
+  content     String   @db.Text
+  journal     String?
+  doi         String?
+  year        Int
+  image       String?
+  pdfUrl      String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("articles")
+  @@index([slug])
+  @@index([published])
+  @@index([year])
+}
+
+// Vídeos
+model Video {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  videoUrl    String // URL do YouTube, Vimeo, etc
+  thumbnail   String?
+  duration    String?
+  category    String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("videos")
+  @@index([slug])
+  @@index([published])
+}
+
+// Curiosidades
+model Curiosity {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  image       String?
+  category    String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("curiosities")
+  @@index([slug])
+  @@index([published])
+}
+
+// Perguntas Frequentes (FAQ)
+model Faq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String   @db.Text
+  category  String?
+  order     Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("faqs")
+  @@index([published])
+  @@index([order])
+}
+
+// Eventos
+model Event {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  content     String   @db.Text
+  image       String?
+  startDate   DateTime
+  endDate     DateTime?
+  location    String?
+  eventUrl    String?
+  category    String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("events")
+  @@index([slug])
+  @@index([published])
+  @@index([startDate])
+}
+
+// Prêmios e Reconhecimentos
+model Award {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  image       String?
+  awardedBy   String
+  awardedTo   String
+  year        Int
+  category    String?
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("awards")
+  @@index([slug])
+  @@index([published])
+  @@index([year])
+}
+
+// Notícias
+model News {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  excerpt     String
+  content     String   @db.Text
+  image       String?
+  category    String?
+  tags        String[] @default([])
+  featured    Boolean  @default(false)
+  published   Boolean  @default(true)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("news")
+  @@index([slug])
+  @@index([published])
+}
+
+// Membros da Equipe
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  role        String
+  bio         String   @db.Text
+  image       String?
+  email       String?
+  phone       String?
+  linkedin    String?
+  lattes      String?
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("team_members")
+  @@index([slug])
+  @@index([published])
+  @@index([order])
+}
+
+// Configurações do Site
+model SiteConfig {
+  id          String   @id @default(cuid())
+  key         String   @unique
+  value       String   @db.Text
+  description String?
+  updatedAt   DateTime @updatedAt
+
+  @@map("site_config")
+}
