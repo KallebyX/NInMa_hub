@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Metadata } from 'next'
 import { ChevronDown, HelpCircle } from 'lucide-react'
 import Section from '@/components/ui/Section'
 import { Card } from '@/components/ui/Card'
