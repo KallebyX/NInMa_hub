@@ -105,14 +105,30 @@ export default function LinhasPesquisaPage() {
         const Icon = linha.icon
         const isEven = index % 2 === 0
 
+        // Mapeamento de cores para classes Tailwind completas
+        const colorClasses = {
+          primary: {
+            bg: 'bg-primary-100',
+            text: 'text-primary',
+          },
+          secondary: {
+            bg: 'bg-secondary-100',
+            text: 'text-secondary',
+          },
+          accent: {
+            bg: 'bg-accent-100',
+            text: 'text-accent',
+          },
+        }
+
+        const colors = colorClasses[linha.color as keyof typeof colorClasses] || colorClasses.primary
+
         return (
           <Section key={linha.title} background={isEven ? 'white' : 'gray'}>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className={isEven ? 'lg:order-1' : 'lg:order-2'}>
-                <div
-                  className={`inline-flex items-center justify-center w-16 h-16 bg-${linha.color}-100 rounded-full mb-6`}
-                >
-                  <Icon className={`w-8 h-8 text-${linha.color}`} aria-hidden="true" />
+                <div className={`inline-flex items-center justify-center w-16 h-16 ${colors.bg} rounded-full mb-6`}>
+                  <Icon className={`w-8 h-8 ${colors.text}`} aria-hidden="true" />
                 </div>
                 <h2 className="heading-3 text-gray-900 mb-4">{linha.title}</h2>
                 <p className="body-large text-gray-600 mb-6">{linha.description}</p>
