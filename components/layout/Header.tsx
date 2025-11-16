@@ -16,9 +16,19 @@ const navigation = [
     href: '#',
     children: [
       { name: 'Sobre Nós', href: '/sobre' },
-      { name: 'Equipe', href: '/equipe' },
       { name: 'Contato', href: '/contato' },
       { name: 'Localização', href: '/localizacao' },
+    ],
+  },
+  {
+    name: 'Pós-Graduação',
+    href: '#',
+    children: [
+      { name: 'Sobre o Programa', href: '/pos-graduacao' },
+      { name: 'Linhas de Pesquisa', href: '/pos-graduacao/linhas-de-pesquisa' },
+      { name: 'Corpo Docente', href: '/pos-graduacao/corpo-docente' },
+      { name: 'Processo Seletivo', href: '/pos-graduacao/processo-seletivo' },
+      { name: 'Alunos e Egressos', href: '/pos-graduacao/alunos-egressos' },
     ],
   },
   {
@@ -26,7 +36,8 @@ const navigation = [
     href: '#',
     children: [
       { name: 'Produtos', href: '/produtos' },
-      { name: 'Artigos', href: '/artigos' },
+      { name: 'Artigos Científicos', href: '/artigos' },
+      { name: 'Blog', href: '/blog' },
       { name: 'Vídeos', href: '/videos' },
       { name: 'Curiosidades', href: '/curiosidades' },
     ],

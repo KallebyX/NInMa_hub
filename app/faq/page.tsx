@@ -21,7 +21,7 @@ const faqs = [
     question: 'Como posso colaborar com o NInMa Hub?',
     answer:
       'Existem diversas formas de colaboração: como pesquisador, desenvolvendo projetos em parceria; como instituição, estabelecendo convênios; como aluno, ingressando em nossos programas de pós-graduação; ou como profissional, participando de eventos e capacitações. Entre em contato conosco para discutir oportunidades.',
-    category: 'Colaboração',
+    category: 'Geral',
   },
   {
     id: 3,
@@ -42,14 +42,14 @@ const faqs = [
     question: 'Quais são os requisitos para ingressar no programa de pós-graduação?',
     answer:
       'Os requisitos incluem graduação completa na área da saúde ou áreas afins, aprovação no processo seletivo (que inclui análise de currículo e entrevista), e disponibilidade para dedicação aos estudos. Informações detalhadas sobre o processo seletivo são divulgadas periodicamente no site da Universidade Franciscana.',
-    category: 'Formação',
+    category: 'Pós-Graduação',
   },
   {
     id: 6,
     question: 'O NInMa Hub oferece estágios ou bolsas de pesquisa?',
     answer:
       'Sim, regularmente oferecemos oportunidades de iniciação científica, estágios de pós-graduação e bolsas de pesquisa financiadas por agências de fomento como CNPq, CAPES e FAPERGS. As oportunidades são divulgadas em nossa seção de eventos e redes sociais.',
-    category: 'Formação',
+    category: 'Pós-Graduação',
   },
   {
     id: 7,
@@ -63,7 +63,71 @@ const faqs = [
     question: 'O hub presta serviços de consultoria?',
     answer:
       'Sim, oferecemos consultoria técnica e científica para instituições públicas e privadas nas áreas de saúde materno-infantil, desenvolvimento de produtos, pesquisa aplicada e formação profissional. Entre em contato para discutir sua necessidade.',
-    category: 'Serviços',
+    category: 'Geral',
+  },
+  // Perguntas para o Público Geral
+  {
+    id: 9,
+    question: 'Até quando devo amamentar meu bebê?',
+    answer:
+      'A Organização Mundial da Saúde (OMS) recomenda o aleitamento materno exclusivo até os 6 meses de idade e a continuação da amamentação, complementada com outros alimentos, até os 2 anos ou mais. O leite materno fornece nutrientes essenciais e proteção contra infecções. Consulte sempre seu pediatra para orientações personalizadas.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 10,
+    question: 'Quando devo iniciar o pré-natal?',
+    answer:
+      'O ideal é iniciar o pré-natal assim que descobrir a gravidez ou suspeitar dela. O acompanhamento precoce permite identificar e tratar problemas de saúde antes que se tornem graves, além de orientar a gestante sobre cuidados importantes durante a gravidez. O Ministério da Saúde recomenda no mínimo 6 consultas de pré-natal.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 11,
+    question: 'O que é parto humanizado?',
+    answer:
+      'Parto humanizado é uma abordagem que respeita o protagonismo da mulher, oferecendo a ela autonomia nas decisões sobre seu parto, com mínimas intervenções médicas desnecessárias. Inclui práticas baseadas em evidências científicas, respeito ao tempo da mulher e do bebê, e promoção de um ambiente acolhedor. Não significa parto sem assistência médica.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 12,
+    question: 'Como identificar sinais de depressão pós-parto?',
+    answer:
+      'Sinais incluem tristeza profunda e persistente, choro frequente, perda de interesse em atividades, dificuldade de se conectar com o bebê, mudanças no sono e apetite, pensamentos negativos recorrentes e, em casos graves, pensamentos de fazer mal a si ou ao bebê. Se você ou alguém próximo apresenta esses sintomas, procure ajuda profissional imediatamente. A depressão pós-parto é tratável.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 13,
+    question: 'Quando começar a introdução alimentar?',
+    answer:
+      'A introdução de alimentos sólidos deve começar aos 6 meses de idade, mantendo o aleitamento materno. Antes disso, o leite materno ou fórmula infantil são suficientes para suprir as necessidades nutricionais do bebê. Consulte sempre um pediatra ou nutricionista para orientações sobre como iniciar e quais alimentos oferecer.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 14,
+    question: 'As vacinas são seguras para bebês?',
+    answer:
+      'Sim! As vacinas são seguras e essenciais para proteger bebês e crianças de doenças graves. Os benefícios das vacinas superam amplamente os riscos. Efeitos colaterais são geralmente leves e temporários. O calendário de vacinação do Ministério da Saúde é baseado em evidências científicas sólidas. Mantenha a carteira de vacinação sempre atualizada.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 15,
+    question: 'É normal o bebê chorar muito?',
+    answer:
+      'Chorar é a forma principal de comunicação do bebê, especialmente nos primeiros meses. Bebês choram quando têm fome, desconforto, sono, precisam de troca de fralda ou simplesmente querem colo. Porém, choro intenso e inconsolável (mais de 3 horas por dia, por mais de 3 dias por semana) pode indicar cólicas ou outro problema. Consulte o pediatra se estiver preocupado.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 16,
+    question: 'Posso fazer exercícios durante a gravidez?',
+    answer:
+      'Sim, na maioria dos casos. Exercícios moderados durante a gravidez trazem benefícios para a mãe e o bebê, incluindo melhor controle de peso, redução de dores nas costas e preparação para o parto. Atividades como caminhada, natação e yoga são geralmente seguras. Sempre consulte seu médico antes de iniciar ou continuar uma rotina de exercícios durante a gestação.',
+    category: 'Saúde Materno-Infantil',
+  },
+  {
+    id: 17,
+    question: 'Como saber se meu bebê está se desenvolvendo bem?',
+    answer:
+      'O acompanhamento regular com o pediatra é fundamental. O médico avaliará crescimento (peso, altura), desenvolvimento motor (como o bebê se movimenta), desenvolvimento cognitivo e social. Marcos importantes incluem: sorrir (2-3 meses), segurar a cabeça (4 meses), sentar (6-8 meses), engatinhar (7-10 meses), andar (12-15 meses). Cada bebê tem seu próprio ritmo, mas consulte o pediatra se tiver preocupações.',
+    category: 'Saúde Materno-Infantil',
   },
 ]
 

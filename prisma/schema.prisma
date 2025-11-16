@@ -220,6 +220,30 @@ model TeamMember {
   @@index([order])
 }
 
+// Posts do Blog (NInMa Explica) - Conteúdo educativo para público geral
+model BlogPost {
+  id           String   @id @default(cuid())
+  title        String
+  slug         String   @unique
+  excerpt      String
+  content      String   @db.Text
+  image        String?
+  author       String
+  category     String
+  readingTime  String   // ex: "8 min"
+  tags         String[] @default([])
+  featured     Boolean  @default(false)
+  published    Boolean  @default(true)
+  publishedAt  DateTime @default(now())
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("blog_posts")
+  @@index([slug])
+  @@index([published])
+  @@index([category])
+}
+
 // Configurações do Site
 model SiteConfig {
   id          String   @id @default(cuid())
