@@ -1,26 +1,13 @@
-import { writeFile, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
 import path from 'path'
-import sharp from 'sharp'
 
 export interface UploadOptions {
   maxSize?: number // in bytes
   allowedTypes?: string[]
-  resize?: {
-    width?: number
-    height?: number
-    fit?: 'cover' | 'contain' | 'fill' | 'inside' | 'outside'
-  }
 }
 
 const defaultOptions: UploadOptions = {
   maxSize: 5 * 1024 * 1024, // 5MB
   allowedTypes: ['image/jpeg', 'image/jpg', 'image/png', 'image/webp', 'image/gif'],
-  resize: {
-    width: 1920,
-    height: 1080,
-    fit: 'inside',
-  },
 }
 
 /**
@@ -69,13 +56,18 @@ export function generateFileName(originalName: string): string {
 }
 
 /**
- * Faz upload de um arquivo para o servidor local
+ * Faz upload de um arquivo para o diretório /tmp (compatível com Vercel serverless)
+ * NOTA: Em produção, use um serviço de armazenamento externo (S3, Cloudinary, etc.)
+ * O /tmp é temporário e não persiste entre invocações serverless.
  */
 export async function uploadToLocal(
   file: File,
   folder: string = 'uploads',
   options: UploadOptions = defaultOptions
 ): Promise<{ url: string; path: string }> {
+  const { writeFile, mkdir } = await import('fs/promises')
+  const { existsSync } = await import('fs')
+
   const opts = { ...defaultOptions, ...options }
 
   // Validar arquivo
@@ -84,8 +76,12 @@ export async function uploadToLocal(
     throw new Error(validation.error)
   }
 
-  // Criar diretório se não existir
-  const uploadDir = path.join(process.cwd(), 'public', folder)
+  // Usar /tmp em produção (Vercel) ou public/ em desenvolvimento
+  const isVercel = process.env.VERCEL === '1'
+  const uploadDir = isVercel
+    ? path.join('/tmp', folder)
+    : path.join(process.cwd(), 'public', folder)
+
   if (!existsSync(uploadDir)) {
     await mkdir(uploadDir, { recursive: true })
   }
@@ -96,32 +92,15 @@ export async function uploadToLocal(
 
   // Converter File para Buffer
   const bytes = await file.arrayBuffer()
-  let buffer = Buffer.from(bytes)
-
-  // Processar imagem se for uma imagem
-  if (file.type.startsWith('image/') && opts.resize) {
-    try {
-      const processedBuffer = await sharp(buffer)
-        .resize({
-          width: opts.resize.width,
-          height: opts.resize.height,
-          fit: opts.resize.fit || 'inside',
-          withoutEnlargement: true,
-        })
-        .jpeg({ quality: 90 })
-        .toBuffer()
-      buffer = Buffer.from(processedBuffer)
-    } catch (error) {
-      console.error('Erro ao processar imagem:', error)
-      // Continuar com o arquivo original se falhar
-    }
-  }
+  const buffer = Buffer.from(bytes)
 
   // Salvar arquivo
   await writeFile(filePath, buffer)
 
-  // Retornar URL pública
-  const publicUrl = `/${folder}/${fileName}`
+  // Em Vercel, retornar path relativo (não é servível publicamente - usar storage externo)
+  const publicUrl = isVercel
+    ? `/api/uploads/${fileName}` // endpoint placeholder
+    : `/${folder}/${fileName}`
 
   return {
     url: publicUrl,
