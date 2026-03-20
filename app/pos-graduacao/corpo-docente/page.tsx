@@ -148,7 +148,7 @@ export default function CorpoDocentePage() {
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2 justify-center">
                     {professor.especialidades.map((esp, i) => (
-                      <Badge key={i} variant="outline" className="text-xs">
+                      <Badge key={i} variant="neutral" className="text-xs">
                         {esp}
                       </Badge>
                     ))}
