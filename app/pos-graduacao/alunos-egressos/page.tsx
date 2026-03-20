@@ -146,7 +146,7 @@ export default function AlunosEgressosPage() {
                   <p className="body-small text-gray-600 mb-2">{depoimento.titulo}</p>
                   <div className="flex items-center gap-2 flex-wrap">
                     <Badge variant="secondary">Turma {depoimento.ano}</Badge>
-                    <Badge variant="outline">{depoimento.atuacao}</Badge>
+                    <Badge variant="neutral">{depoimento.atuacao}</Badge>
                   </div>
                 </div>
               </CardContent>
@@ -226,7 +226,7 @@ export default function AlunosEgressosPage() {
                       <h3 className="heading-5 text-gray-900 mb-2">{projeto.titulo}</h3>
                       <div className="flex items-center gap-2 mb-3">
                         <Badge variant="secondary">{projeto.autor}</Badge>
-                        <Badge variant="outline">{projeto.ano}</Badge>
+                        <Badge variant="neutral">{projeto.ano}</Badge>
                       </div>
                       <p className="body-normal text-gray-600">{projeto.descricao}</p>
                     </div>
