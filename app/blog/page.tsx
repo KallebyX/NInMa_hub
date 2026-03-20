@@ -158,7 +158,7 @@ export default function BlogPage() {
             {categorias.map((categoria) => (
               <Badge
                 key={categoria}
-                variant={categoria === 'Todos' ? 'primary' : 'outline'}
+                variant={categoria === 'Todos' ? 'primary' : 'neutral'}
                 className="cursor-pointer hover:bg-primary-100 transition-colors px-4 py-2"
               >
                 {categoria}
@@ -253,7 +253,7 @@ export default function BlogPage() {
                       <BookOpen className="w-10 h-10 text-secondary-600" aria-hidden="true" />
                     </div>
                     <div className="flex-1">
-                      <Badge variant="outline" className="mb-2 text-xs">
+                      <Badge variant="neutral" className="mb-2 text-xs">
                         {post.categoria}
                       </Badge>
                       <h3 className="heading-6 text-gray-900 mb-2 group-hover:text-primary transition-colors">
