@@ -12,7 +12,7 @@
     "prisma:push": "prisma db push",
     "prisma:studio": "prisma studio",
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts",
-    "postinstall": "prisma generate"
+    "postinstall": "prisma generate || true"
   },
   "dependencies": {
     "next": "14.2.5",
@@ -31,8 +31,7 @@
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.5.0",
     "date-fns": "^3.6.0",
-    "react-quill": "^2.0.0",
-    "sharp": "^0.33.4"
+    "react-quill": "^2.0.0"
   },
   "devDependencies": {
     "typescript": "^5.5.4",
@@ -50,5 +49,9 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+  },
+  "optionalDependencies": {
+    "sharp": "^0.33.4",
+    "@img/sharp-linux-x64": "^0.33.4"
   }
 }

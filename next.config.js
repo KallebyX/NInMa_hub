@@ -16,8 +16,8 @@ const nextConfig = {
       bodySizeLimit: '10mb',
     },
   },
-  // Otimizações para Vercel
-  swcMinify: true,
+  // Fix para Vercel: external packages nativos
+  serverExternalPackages: ['sharp'],
   compress: true,
 }
 
