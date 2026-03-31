@@ -138,7 +138,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <div className="pt-8 border-t">
                 <h3 className="heading-5 text-gray-900 mb-4">Palavras-chave</h3>
                 <div className="flex flex-wrap gap-2">
-                  {article.tags.map((tag, index) => (
+                  {article.tags.map((tag: string, index: number) => (
                     <Badge key={index} variant="secondary" size="md">
                       {tag}
                     </Badge>
@@ -224,7 +224,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-2">Autores</h3>
                     <ul className="space-y-1">
-                      {article.authors.map((author, index) => (
+                      {article.authors.map((author: string, index: number) => (
                         <li key={index} className="text-sm text-gray-600">
                           {author}
                         </li>
