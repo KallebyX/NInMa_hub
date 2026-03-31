@@ -124,7 +124,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
               <div className="pt-8 border-t">
                 <h3 className="heading-5 text-gray-900 mb-4">Tags</h3>
                 <div className="flex flex-wrap gap-2">
-                  {product.tags.map((tag, index) => (
+                  {product.tags.map((tag: string, index: number) => (
                     <Badge key={index} variant="secondary" size="md">
                       {tag}
                     </Badge>
